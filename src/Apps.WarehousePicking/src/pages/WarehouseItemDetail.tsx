@@ -4,8 +4,11 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Button, Card, MessageBar, MessageBarBody, Spinner, Title1, Title3 } from "@fluentui/react-components";
 import type { IColumn } from "@talxis/client-libraries";
 import { Lab_warehouseitemsService } from "@/generated/services/Lab_warehouseitemsService";
+import { Lab_productsService } from "@/generated/services/Lab_productsService";
 import { Lab_warehousetransactionsService } from "@/generated/services/Lab_warehousetransactionsService";
 import type { Lab_warehousetransactions } from "@/generated/models/Lab_warehousetransactionsModel";
+import { BarcodeScanDialog } from "@/components/BarcodeScanDialog";
+import { LinkedProductImage } from "@/components/LinkedProductImage";
 import { RecordFormDialog } from "@/components/RecordFormDialog";
 import type { FormField } from "@/components/RecordFormFields";
 import { RecordGrid } from "@/components/RecordGrid";
@@ -46,6 +49,16 @@ export default function WarehouseItemDetailPage() {
       return result.data;
     },
     enabled: !!id,
+  });
+  const item = itemQuery.data;
+  const linkedProductId = item?._lab_productid_value;
+  const linkedProductQuery = useQuery({
+    queryKey: ["linkedProduct", linkedProductId],
+    queryFn: async () => {
+      const result = await serviceResult(Lab_productsService.get(linkedProductId!));
+      return result.data;
+    },
+    enabled: !!linkedProductId,
   });
 
   const transactionsQuery = useQuery({
@@ -104,7 +117,6 @@ export default function WarehouseItemDetailPage() {
 
   if (itemQuery.isLoading) return <Spinner label="Loading item" />;
   if (itemQuery.error) return <MessageBar intent="error"><MessageBarBody>{errorText(itemQuery.error)}</MessageBarBody></MessageBar>;
-  const item = itemQuery.data;
   if (!item) return <MessageBar intent="error"><MessageBarBody>Warehouse item not found.</MessageBarBody></MessageBar>;
 
   return (
@@ -117,6 +129,11 @@ export default function WarehouseItemDetailPage() {
         <div className="action-row">
           <Button appearance="primary" onClick={() => openMovement("outbound")}>Pick stock</Button>
           <Button onClick={() => openMovement("inbound")}>Receive stock</Button>
+          <BarcodeScanDialog
+            itemId={item.lab_warehouseitemid}
+            currentProductId={linkedProductId}
+            onLinked={() => void queryClient.invalidateQueries({ queryKey: ["warehouseItem", id] })}
+          />
         </div>
       </header>
 
@@ -128,6 +145,14 @@ export default function WarehouseItemDetailPage() {
         <div><span>Category</span><strong>{item.lab_categoryname ?? "Not set"}</strong></div>
         <div><span>Location</span><strong>{item.lab_locationidname ?? "Not set"}</strong></div>
       </Card>
+      {linkedProductQuery.error && <MessageBar intent="error"><MessageBarBody>{errorText(linkedProductQuery.error)}</MessageBarBody></MessageBar>}
+      {linkedProductQuery.data && (
+        <Card className="item-summary">
+          <LinkedProductImage productId={linkedProductQuery.data.lab_productid} />
+          <div><Title3>Linked product</Title3><strong>{linkedProductQuery.data.lab_name}</strong></div>
+          <div><span>EAN</span><strong>{linkedProductQuery.data.lab_ean}</strong></div>
+        </Card>
+      )}
 
       <Title3>Transactions</Title3>
       {transactionsQuery.isLoading && <Spinner label="Loading item transactions" />}

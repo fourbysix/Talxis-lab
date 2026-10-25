@@ -1,0 +1,190 @@
+{
+  "name": "shared_lab-5fopen-20food-20facts-5fb827dcbdba927739",
+  "id": "/providers/Microsoft.PowerApps/apis/shared_lab-5fopen-20food-20facts-5fb827dcbdba927739",
+  "type": "Microsoft.PowerApps/apis",
+  "properties": {
+    "xrmConnectorId": "796f58f9-aeb5-ba33-a08b-1dfba0d9062f",
+    "displayName": "Open Food Facts",
+    "iconUri": "https://defaulticons.powerapps.com/defaulticons/api-dedicated.png",
+    "iconBrandColor": "#007ee5",
+    "contact": {},
+    "license": {},
+    "apiEnvironment": "Shared",
+    "isCustomApi": true,
+    "blobUrisAreProxied": false,
+    "connectionParameters": {},
+    "swagger": {
+      "swagger": "2.0",
+      "info": {
+        "title": "Open Food Facts",
+        "description": "Look up product data by barcode from the Open Food Facts public database.",
+        "version": "1.0"
+      },
+      "host": "39172f8c354de6549fdadd47ef47c9.1a.environment.api.powerplatform.com",
+      "basePath": "/connectors/runtime/invoke/scalegroups/usa002/shards/01/apis/lab-5fopen-20food-20facts-5fb827dcbdba927739/connections/",
+      "schemes": [
+        "https"
+      ],
+      "consumes": [],
+      "produces": [
+        "application/json"
+      ],
+      "paths": {
+        "/{connectionId}/product/{barcode}.json": {
+          "get": {
+            "operationId": "GetProductByBarcode",
+            "summary": "Get product by barcode",
+            "parameters": [
+              {
+                "name": "connectionId",
+                "in": "path",
+                "required": true,
+                "x-ms-visibility": "internal",
+                "type": "string"
+              },
+              {
+                "name": "barcode",
+                "in": "path",
+                "required": true,
+                "type": "string"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "Product details",
+                "schema": {
+                  "$ref": "#/definitions/Product"
+                }
+              }
+            }
+          }
+        },
+        "/{connectionId}/product-image": {
+          "get": {
+            "operationId": "GetProductImage",
+            "summary": "Get product image",
+            "produces": [
+              "image/jpeg",
+              "image/png"
+            ],
+            "parameters": [
+              {
+                "name": "connectionId",
+                "in": "path",
+                "required": true,
+                "x-ms-visibility": "internal",
+                "type": "string"
+              },
+              {
+                "name": "imageUrl",
+                "in": "query",
+                "required": true,
+                "type": "string"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "Product image bytes",
+                "schema": {
+                  "type": "file",
+                  "x-ms-media-kind": "image"
+                }
+              }
+            }
+          }
+        }
+      },
+      "definitions": {
+        "Product": {
+          "type": "object",
+          "properties": {
+            "ean": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "brand": {
+              "type": "string"
+            },
+            "quantity": {
+              "type": "string"
+            },
+            "imageUrl": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "parameters": {},
+      "responses": {},
+      "securityDefinitions": {},
+      "security": [],
+      "tags": []
+    },
+    "runtimeUrls": [
+      "https://39172f8c354de6549fdadd47ef47c9.1a.environment.api.powerplatform.com/connectors/runtime/invoke/scalegroups/usa002/shards/01/apis/lab-5fopen-20food-20facts-5fb827dcbdba927739/connections/"
+    ],
+    "primaryRuntimeUrl": "https://39172f8c354de6549fdadd47ef47c9.1a.environment.api.powerplatform.com/connectors/runtime/invoke/scalegroups/usa002/shards/01/apis/lab-5fopen-20food-20facts-5fb827dcbdba927739/connections/",
+    "doNotUseApiHubNetRuntimeUrl": "https://39172f8c-354d-e654-9fda-dd47ef47c91a.01.custom.usa002.azure-apihub.net/apim/lab-5fopen-20food-20facts-5fb827dcbdba927739",
+    "metadata": {
+      "source": "powerapps-user-defined",
+      "brandColor": "#007ee5",
+      "contact": {},
+      "license": {},
+      "publisherUrl": null,
+      "serviceUrl": null,
+      "documentationUrl": null,
+      "environmentName": "39172f8c-354d-e654-9fda-dd47ef47c91a",
+      "xrmConnectorId": "796f58f9-aeb5-ba33-a08b-1dfba0d9062f",
+      "almMode": "Solution",
+      "parameters": {},
+      "useNewApimVersion": "True",
+      "createdBy": "{\"id\":\"4ba812e6-b7b4-47a3-9120-10f4c49ee7d5\",\"displayName\":\"User 088\",\"type\":\"User\",\"userType\":\"NotSpecified\",\"tenantId\":\"957a313a-971b-4add-b513-038b581bc3e7\",\"userPrincipalName\":\"user088@lab.talxis.com\"}",
+      "modifiedBy": "{\"id\":\"4ba812e6-b7b4-47a3-9120-10f4c49ee7d5\",\"displayName\":\"User 088\",\"type\":\"User\",\"userType\":\"NotSpecified\",\"tenantId\":\"957a313a-971b-4add-b513-038b581bc3e7\",\"userPrincipalName\":\"user088@lab.talxis.com\"}",
+      "allowSharing": false
+    },
+    "capabilities": [
+      "actions"
+    ],
+    "description": "Look up product data by barcode from the Open Food Facts public database.",
+    "apiDefinitions": {
+      "originalSwaggerUrl": "https://usa002004wus3ext.blob.core.windows.net/api-swagger-files/unitedstates-002/lab-5fopen-20food-20facts-5fb827dcbdba927739.json_original?skoid=e6898b49-53e1-4e33-bbf3-f68cbec72336&sktid=33e01921-4d64-4f8c-a055-5bdaffd5e33d&skt=2026-10-25T08%3A35%3A50Z&ske=2026-10-26T08%3A35%3A50Z&sks=b&skv=2025-01-05&sv=2025-01-05&spr=https&se=2026-10-25T22%3A06%3A03Z&sr=b&sp=r&sig=lb1BiV%2BwwmnlUxpGvVyZxi7IwiFPnmU%2Fo%2FVKh1kYAmg%3D",
+      "modifiedSwaggerUrl": "https://usa002004wus3ext.blob.core.windows.net/api-swagger-files/unitedstates-002/lab-5fopen-20food-20facts-5fb827dcbdba927739.json?skoid=e6898b49-53e1-4e33-bbf3-f68cbec72336&sktid=33e01921-4d64-4f8c-a055-5bdaffd5e33d&skt=2026-10-25T08%3A35%3A50Z&ske=2026-10-26T08%3A35%3A50Z&sks=b&skv=2025-01-05&sv=2025-01-05&spr=https&se=2026-10-25T22%3A06%3A03Z&sr=b&sp=r&sig=HDVb45azzij%2FCAOLtsOZI4CPVdG1P%2BukYW2VpRCnSsU%3D"
+    },
+    "policyTemplateInstances": [],
+    "backendService": {
+      "serviceUrl": "https://world.openfoodfacts.org/api/v2"
+    },
+    "createdBy": {
+      "id": "4ba812e6-b7b4-47a3-9120-10f4c49ee7d5",
+      "displayName": "User 088",
+      "type": "User",
+      "userType": "NotSpecified",
+      "tenantId": "957a313a-971b-4add-b513-038b581bc3e7",
+      "userPrincipalName": "user088@lab.talxis.com"
+    },
+    "modifiedBy": {
+      "id": "4ba812e6-b7b4-47a3-9120-10f4c49ee7d5",
+      "displayName": "User 088",
+      "type": "User",
+      "userType": "NotSpecified",
+      "tenantId": "957a313a-971b-4add-b513-038b581bc3e7",
+      "userPrincipalName": "user088@lab.talxis.com"
+    },
+    "createdTime": "2026-10-25T20:58:23.1678175Z",
+    "changedTime": "2026-10-25T20:58:23.1678175Z",
+    "environment": {
+      "id": "/providers/Microsoft.PowerApps/environments/39172f8c-354d-e654-9fda-dd47ef47c91a",
+      "name": "39172f8c-354d-e654-9fda-dd47ef47c91a"
+    },
+    "tier": "Standard",
+    "publisher": "User 088",
+    "almMode": "Solution",
+    "scriptDefinitionUrl": "https://usa002004wus3ext.blob.core.windows.net/api-swagger-files/unitedstates-002/lab-5fopen-20food-20facts-5fb827dcbdba927739-script.json?skoid=e6898b49-53e1-4e33-bbf3-f68cbec72336&sktid=33e01921-4d64-4f8c-a055-5bdaffd5e33d&skt=2026-10-25T08%3A35%3A50Z&ske=2026-10-26T08%3A35%3A50Z&sks=b&skv=2025-01-05&sv=2025-01-05&spr=https&se=2026-10-25T22%3A06%3A03Z&sr=b&sp=r&sig=ngA1aL8Iijqpjflq4Lt6bnPxczJ3JOgTZumfDPXFOYo%3D",
+    "scriptOperations": [],
+    "parameters": {},
+    "rateLimit": 0,
+    "apiVersion": "None"
+  }
+}

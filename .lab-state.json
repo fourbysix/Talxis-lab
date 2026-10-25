@@ -43,5 +43,7 @@
   "configDataDirectory": "/workspaces/Talxis-lab/src/Packages.Main/Data",
   "configDataSchemaPath": "/workspaces/Talxis-lab/src/Packages.Main/Data/data_schema.xml",
   "configDataFilePath": "/workspaces/Talxis-lab/src/Packages.Main/Data/data.xml",
-  "testsUiScaffolded": true
+  "testsUiScaffolded": true,
+  "pluginsTestsScaffolded": true,
+  "scriptsTestsScaffolded": true
 }

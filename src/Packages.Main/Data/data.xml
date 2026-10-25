@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<entities>
+  <entity name="lab_warehouselocation" displayname="Warehouse Location">
+    <records>
+      <record id="2592a040-83b7-464e-ac3e-faff2031398c">
+        <field name="lab_warehouselocationid" value="2592a040-83b7-464e-ac3e-faff2031398c" />
+        <field name="lab_name" value="Main Warehouse" />
+        <field name="lab_address" value="123 Industrial Blvd" />
+        <field name="lab_capacity" value="1000" />
+        <field name="lab_isactive" value="True" />
+      </record>
+      <record id="f9c0881c-258f-42eb-b58b-84f2d37cda0e">
+        <field name="lab_warehouselocationid" value="f9c0881c-258f-42eb-b58b-84f2d37cda0e" />
+        <field name="lab_name" value="Overflow Storage" />
+        <field name="lab_address" value="456 Backup Lane" />
+        <field name="lab_capacity" value="500" />
+        <field name="lab_isactive" value="True" />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+  <entity name="lab_warehouseitem" displayname="Warehouse Item">
+    <records>
+      <record id="6e0bd72a-0e3b-487c-b143-4c694e9e488a">
+        <field name="lab_warehouseitemid" value="6e0bd72a-0e3b-487c-b143-4c694e9e488a" />
+        <field name="lab_name" value="Office Laptop" />
+        <field name="lab_sku" value="LTP-001" />
+        <field name="lab_availablequantity" value="100" />
+        <field name="lab_category" value="100000000" />
+        <field name="lab_isperishable" value="False" />
+        <field name="lab_unitprice" value="899.00" />
+        <field name="lab_reorderpoint" value="20" />
+        <field name="lab_locationid" value="2592a040-83b7-464e-ac3e-faff2031398c" lookupentity="lab_warehouselocation" lookupentityname="Main Warehouse" />
+      </record>
+      <record id="b9201d73-02eb-4065-bf4d-b5f5c5bd4b70">
+        <field name="lab_warehouseitemid" value="b9201d73-02eb-4065-bf4d-b5f5c5bd4b70" />
+        <field name="lab_name" value="Wireless Mouse" />
+        <field name="lab_sku" value="MSE-002" />
+        <field name="lab_availablequantity" value="5" />
+        <field name="lab_category" value="100000000" />
+        <field name="lab_isperishable" value="False" />
+        <field name="lab_unitprice" value="19.99" />
+        <field name="lab_reorderpoint" value="10" />
+        <field name="lab_locationid" value="2592a040-83b7-464e-ac3e-faff2031398c" lookupentity="lab_warehouselocation" lookupentityname="Main Warehouse" />
+      </record>
+      <record id="e42c5c02-0cd1-4fe5-b6ef-c2c620f1bfcf">
+        <field name="lab_warehouseitemid" value="e42c5c02-0cd1-4fe5-b6ef-c2c620f1bfcf" />
+        <field name="lab_name" value="Laser Printer" />
+        <field name="lab_sku" value="PRN-003" />
+        <field name="lab_availablequantity" value="50" />
+        <field name="lab_category" value="100000000" />
+        <field name="lab_isperishable" value="False" />
+        <field name="lab_unitprice" value="249.50" />
+        <field name="lab_reorderpoint" value="15" />
+        <field name="lab_locationid" value="f9c0881c-258f-42eb-b58b-84f2d37cda0e" lookupentity="lab_warehouselocation" lookupentityname="Overflow Storage" />
+      </record>
+      <record id="0552ebd4-dbf7-47ed-bf92-fae96f36fe7c">
+        <field name="lab_warehouseitemid" value="0552ebd4-dbf7-47ed-bf92-fae96f36fe7c" />
+        <field name="lab_name" value="Nutella Hazelnut Spread 400g" />
+        <field name="lab_sku" value="FOD-004" />
+        <field name="lab_availablequantity" value="200" />
+        <field name="lab_category" value="100000002" />
+        <field name="lab_isperishable" value="True" />
+        <field name="lab_unitprice" value="4.99" />
+        <field name="lab_reorderpoint" value="40" />
+        <field name="lab_locationid" value="2592a040-83b7-464e-ac3e-faff2031398c" lookupentity="lab_warehouselocation" lookupentityname="Main Warehouse" />
+      </record>
+      <record id="cbe58fd5-4622-418d-ac8b-04d8041c8c65">
+        <field name="lab_warehouseitemid" value="cbe58fd5-4622-418d-ac8b-04d8041c8c65" />
+        <field name="lab_name" value="Coca-Cola 330ml Can (24-pack)" />
+        <field name="lab_sku" value="FOD-005" />
+        <field name="lab_availablequantity" value="150" />
+        <field name="lab_category" value="100000002" />
+        <field name="lab_isperishable" value="True" />
+        <field name="lab_unitprice" value="12.99" />
+        <field name="lab_reorderpoint" value="30" />
+        <field name="lab_locationid" value="2592a040-83b7-464e-ac3e-faff2031398c" lookupentity="lab_warehouselocation" lookupentityname="Main Warehouse" />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+  <entity name="lab_warehousetransaction" displayname="Warehouse Transaction">
+    <records>
+      <record id="a0cdb965-1279-4f0a-a5db-58f335b9863e">
+        <field name="lab_warehousetransactionid" value="a0cdb965-1279-4f0a-a5db-58f335b9863e" />
+        <field name="lab_name" value="TRX-0001" />
+        <field name="lab_itemid" value="6e0bd72a-0e3b-487c-b143-4c694e9e488a" lookupentity="lab_warehouseitem" lookupentityname="Office Laptop" />
+        <field name="lab_quantity" value="20" />
+        <field name="lab_transactiontype" value="100000000" />
+        <field name="lab_referencenumber" value="PO-2026-001" />
+      </record>
+      <record id="cc2d0547-3872-4f50-8db9-0cbb5407e535">
+        <field name="lab_warehousetransactionid" value="cc2d0547-3872-4f50-8db9-0cbb5407e535" />
+        <field name="lab_name" value="TRX-0002" />
+        <field name="lab_itemid" value="b9201d73-02eb-4065-bf4d-b5f5c5bd4b70" lookupentity="lab_warehouseitem" lookupentityname="Wireless Mouse" />
+        <field name="lab_quantity" value="5" />
+        <field name="lab_transactiontype" value="100000001" />
+        <field name="lab_referencenumber" value="SO-2026-014" />
+      </record>
+    </records>
+    <m2mrelationships />
+  </entity>
+</entities>

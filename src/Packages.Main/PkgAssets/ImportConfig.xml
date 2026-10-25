@@ -10,7 +10,7 @@
   - agentdesktopexename (string)
   - crmmigdataimportfile (string)
 -->
-<configdatastorage installsampledata="false" waitforsampledatatoinstall="true">
+<configdatastorage installsampledata="false" waitforsampledatatoinstall="true" crmmigdataimportfile="MainCmtPackage.zip">
   <solutions>
     <!--
       Solutions to import

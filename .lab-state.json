@@ -6,5 +6,13 @@
   "publisherPrefix": "lab",
   "repo": "fourbysix/Talxis-lab",
   "mainRulesetId": 25828776,
-  "mainRulesetName": "lab-main-protection"
+  "mainRulesetName": "lab-main-protection",
+  "devEnvUrl": "https://wm-dev-2045.crm.dynamics.com",
+  "devEnvId": "39172f8c-354d-e654-9fda-dd47ef47c91a",
+  "devOrgId": "cb976819-97d0-f111-be87-000d3a5cb417",
+  "devProfile": "dev",
+  "testEnvUrl": "https://wm-test-2045.crm.dynamics.com",
+  "testEnvId": "08cf07c5-25cf-e5d0-8640-8321d5ad4a03",
+  "testOrgId": "b8976819-97d0-f111-be87-000d3a5cb40a",
+  "testProfile": "test"
 }

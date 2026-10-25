@@ -1,0 +1,82 @@
+/* FluentProvider supplies fonts, colors and theme tokens - only the page reset lives here. */
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #f5f5f5;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.app-header {
+  align-items: center;
+  background: white;
+  border-bottom: 1px solid #e1e1e1;
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+.app-content {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 2rem;
+}
+
+.page-heading,
+.action-row {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.page-heading {
+  margin-bottom: 1.5rem;
+}
+
+.page-heading p {
+  margin: 0.5rem 0 0;
+}
+
+.item-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 1.5rem 0 2rem;
+  padding: 1.5rem;
+}
+
+.item-summary > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 10rem;
+}
+
+@media (max-width: 640px) {
+  .app-header,
+  .page-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .app-content {
+    padding: 1rem;
+  }
+}
+
+/* Base controls are Fluent v8: their dropdowns, suggestions and callouts render into one shared
+   layer host, created on first use. Fluent v9 dialogs and popovers portal to <body> at the same
+   z-index, so a dialog opened after that host exists would cover them; keep v8 layers on top
+   (!important: Fluent v8 sets the host's z-index inline). */
+#fluent-default-layer-host {
+  z-index: 1000001 !important;
+}

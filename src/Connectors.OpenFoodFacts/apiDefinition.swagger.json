@@ -1,0 +1,95 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Open Food Facts",
+    "description": "Look up product data by barcode from the Open Food Facts public database.",
+    "version": "1.0"
+  },
+  "host": "world.openfoodfacts.org",
+  "basePath": "/api/v2",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/product/{barcode}.json": {
+      "get": {
+        "operationId": "GetProductByBarcode",
+        "summary": "Get product by barcode",
+        "parameters": [
+          {
+            "name": "barcode",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product details",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        }
+      }
+    },
+    "/product-image": {
+      "get": {
+        "operationId": "GetProductImage",
+        "summary": "Get product image",
+        "produces": [
+          "image/jpeg",
+          "image/png"
+        ],
+        "parameters": [
+          {
+            "name": "imageUrl",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product image bytes",
+            "schema": {
+              "type": "file",
+              "x-ms-media-kind": "image"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Product": {
+      "type": "object",
+      "properties": {
+        "ean": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "brand": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string"
+        },
+        "imageUrl": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {},
+  "security": [],
+  "tags": []
+}
